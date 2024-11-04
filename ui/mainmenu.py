@@ -12,7 +12,7 @@ class MainMenu(State):
 
         # text
         self.title = "Pixel Odyssey"
-        self.title_text = MainMenu.font.render(self.title, True, "black", None)
+        self.title_text = MainMenu.font.render(self.title, True, "white", None)
         self.title_rect = self.title_text.get_rect(center = (SCREENWIDTH // 2, SCREENHEIGHT // 2))
 
 
