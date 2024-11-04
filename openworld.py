@@ -1,6 +1,7 @@
 import pygame
 from opensimplex import OpenSimplex
 from utils.state import State
+from groups.camera import Camera
 from entities.player import Player
 from entities.block import Block
 from globals import *
@@ -10,7 +11,7 @@ class OpenWorld(State):
         self.app = app
         self.screen = self.app.screen
 
-        self.sprites = pygame.sprite.Group() 
+        self.sprites = Camera() 
         self.blocks = pygame.sprite.Group() 
 
         self.player = Player(self.blocks)
@@ -44,5 +45,5 @@ class OpenWorld(State):
 
     def draw(self):
         self.screen.fill('lightblue')
-        self.sprites.draw(self.screen)
+        self.sprites.draw(self.screen, self.player)
 
