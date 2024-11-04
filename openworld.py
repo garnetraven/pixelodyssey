@@ -21,14 +21,14 @@ class OpenWorld(State):
 
     def gen_world(self):
         noise_generator = OpenSimplex(seed = 112340987613248) 
-        width = 100
-        height = 20
+        width = 200
+        height = 50
         offset = 35
 
         for x in range(width):
             column = []
             for y in range(height):
-                noise_value = noise_generator.noise2(x * 0.3, y * 0.2)
+                noise_value = noise_generator.noise2(x * 0.1, y * 0.1)
                 height_value = int((noise_value + 1) / 2 * height + 10)
                 column.append(height_value)
 
