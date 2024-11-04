@@ -16,3 +16,10 @@ class EventHandler:
                     return True
         return False
 
+    @staticmethod
+    def is_closed_requested() -> bool:
+        for e in EventHandler.events:
+            if e.type == pygame.QUIT:
+                return True
+        return False
+
