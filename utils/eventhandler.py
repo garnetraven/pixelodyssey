@@ -23,3 +23,12 @@ class EventHandler:
                 return True
         return False
 
+    @staticmethod
+    def clicked(button: int = 1): # 1 - left click, 2 = right click
+        for e in EventHandler.events:
+            if e.type == pygame.MOUSEBUTTONDOWN:
+                if e.button == button:
+                    return True
+        return False
+
+
