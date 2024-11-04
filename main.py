@@ -30,6 +30,8 @@ class Game:
     def update(self) -> None:
         EventHandler.poll_events()
 
+        if EventHandler.is_closed_requested():
+            self.running = False
         if EventHandler.keydown(pygame.K_q):
             self.running = False
 
