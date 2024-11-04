@@ -26,3 +26,9 @@ class StateButton(Button):
     def use(self, app):
         app.active_state = self.state
 
+class QuitButton(Button):
+    def __init__(self, screen, text: str, position: tuple) -> None:
+        super().__init__(screen, text, position)
+
+    def use(self, app):
+        app.running = False
