@@ -1,7 +1,7 @@
 import pygame
 import sys
-
 from globals import *
+from utils.eventhandler import EventHandler
 
 class Game:
     def __init__(self) -> None:
@@ -22,9 +22,10 @@ class Game:
             self.draw()
 
     def update(self) -> None:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                self.running = False
+        EventHandler.poll_events()
+
+        if EventHandler.keydown(pygame.K_q):
+            self.running = False
 
     def draw(self) -> None:
         self.screen.fill((0, 0, 0))
