@@ -9,12 +9,12 @@ class OpenWorld(State):
 
         self.player = Player()
 
-        self.all_sprites = pygame.sprite.Group(self.player)
+        self.sprites = pygame.sprite.Group(self.player) 
 
     def update(self):
-        self.all_sprites.update()
+        self.sprites.update()
 
     def draw(self):
         self.screen.fill('lightblue')
-        self.all_sprites.draw(self.screen)
+        self.sprites.draw(self.screen)
 
