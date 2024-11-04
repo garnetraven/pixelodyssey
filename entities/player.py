@@ -9,38 +9,32 @@ class Player(pygame.sprite.Sprite):
         self.image.fill((255, 0, 0))
         self.rect = self.image.get_rect()
         self.pos = Vector2(self.rect.center)
-        self.gravity = 10
-        self.speed = 5
-        self.jump_strength = -50
-        self.mass = 1
+        self.jump_strength = -15
+        self.mass = 15
         self.velocity = Vector2(0, 0)
         self.grounded = False
         self.block_group = block_group
-        self.acceleration = 1
-        self.friction = 0.9
 
     def input(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_a]:
-            self.velocity.x -= self.acceleration
-        if keys[pygame.K_d]:
-            self.velocity.x += self.acceleration
+            self.velocity.x = -SPEED 
+        elif keys[pygame.K_d]:
+            self.velocity.x = SPEED 
+        else:
+            self.velocity.x = 0
+
         if keys[pygame.K_SPACE] and self.grounded:
             self.jump()
-
-    def apply_gravity(self):
-        if not self.grounded:  # Only apply gravity if not grounded
-            self.velocity.y += self.gravity * self.mass
-            if self.velocity.y > 10:  # Terminal velocity
-                self.velocity.y = 10
 
     def jump(self):
         self.velocity.y = self.jump_strength  # Set jump velocity
         self.grounded = False
 
     def move(self):
-        # Apply friction to horizontal movement
-        self.velocity.x *= self.friction
+        self.velocity.y += GRAVITY * self.mass
+        if self.velocity.y > self.mass * TERMINAL_VELOCITY:  # Terminal velocity
+            self.velocity.y = self.mass * TERMINAL_VELOCITY
 
         # Applying velocity
         self.rect.x += self.velocity.x
@@ -77,10 +71,9 @@ class Player(pygame.sprite.Sprite):
 
     def update(self):
         self.input()
-        self.apply_gravity()
         self.move()
 
     def draw(self, surface):
         surface.blit(self.image, self.rect)
-        pygame.draw.rect(surface, (255, 0, 0), self.rect, 2)  # Draw the player rect in red for debugging
+        pygame.draw.rect(surface, (255, 255, 255), self.rect, 2)  # Draw the player rect in white for debugging
 
