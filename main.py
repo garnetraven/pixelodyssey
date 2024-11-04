@@ -2,6 +2,7 @@ import pygame
 import sys
 from globals import *
 from utils.eventhandler import EventHandler
+from ui.mainmenu import MainMenu
 
 class Game:
     def __init__(self) -> None:
@@ -11,6 +12,11 @@ class Game:
         self.clock = pygame.time.Clock()
 
         self.running = True
+
+        self.states ={
+            'mainmenu': MainMenu(self)
+        }
+        self.active_state = 'mainmenu'
 
     def start(self) -> None:
         self.loop()
@@ -27,8 +33,10 @@ class Game:
         if EventHandler.keydown(pygame.K_q):
             self.running = False
 
+        self.states[self.active_state].update()
+
     def draw(self) -> None:
-        self.screen.fill((0, 0, 0))
+        self.states[self.active_state].draw()
         pygame.display.flip()
         self.clock.tick(FPS)
 
