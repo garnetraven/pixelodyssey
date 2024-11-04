@@ -5,7 +5,7 @@ from globals import *
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__() 
-        self.image = pygame.Surface((32,64))
+        self.image = pygame.Surface((TILESIZE * 2,TILESIZE * 3))
         self.image.fill((255,0,0))
         self.rect = self.image.get_rect()
         self.pos = Vector2(self.rect.center)
