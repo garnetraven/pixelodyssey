@@ -3,6 +3,7 @@ import sys
 from globals import *
 from utils.eventhandler import EventHandler
 from ui.mainmenu import MainMenu
+from ui.options import Options
 from openworld import OpenWorld
 
 class Game:
@@ -28,7 +29,8 @@ class Game:
         # Initialize game states
         self.states ={
             'mainmenu': MainMenu(self),
-            'open_world': OpenWorld(self)
+            'open_world': OpenWorld(self),
+            'options': Options(self)
         }
         self.active_state = 'mainmenu'
 
