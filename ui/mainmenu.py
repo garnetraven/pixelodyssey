@@ -1,7 +1,7 @@
 import pygame
 from globals import *
 from utils.state import State
-from ui.components import StateButton
+from ui.components import StateButton, QuitButton
 
 class MainMenu(State):
     def __init__(self, app) -> None:
@@ -15,7 +15,9 @@ class MainMenu(State):
         self.title_text = MainMenu.font.render(self.title, True, "white", None)
         self.title_rect = self.title_text.get_rect(center = (SCREENWIDTH // 2, SCREENHEIGHT // 2))
         self.buttons = [
-            StateButton(self.screen, "Play", "open_world", (SCREENWIDTH // 2, SCREENHEIGHT // 2 + 50))
+            StateButton(self.screen, "Play", "open_world", (SCREENWIDTH // 2, SCREENHEIGHT // 2 + 50)),
+            StateButton(self.screen, "Options", "options", (SCREENWIDTH // 2, SCREENHEIGHT // 2 + 100)),
+            QuitButton(self.screen, "Quit", (SCREENWIDTH // 2, SCREENHEIGHT // 2 + 150))
         ]
 
     def update(self) -> None:
