@@ -4,6 +4,7 @@ from utils.state import State
 from groups.camera import Camera
 from entities.player import Player
 from entities.block import Block
+from utils.eventhandler import EventHandler
 from globals import *
 
 class OpenWorld(State):
@@ -42,6 +43,10 @@ class OpenWorld(State):
 
     def update(self):
         self.sprites.update()
+
+        if EventHandler.keydown(pygame.K_p):
+            self.app.active_state = "paused"
+
 
     def draw(self):
         self.screen.fill('lightblue')
