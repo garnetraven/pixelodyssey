@@ -4,6 +4,7 @@ from globals import *
 from utils.eventhandler import EventHandler
 from ui.mainmenu import MainMenu
 from ui.options import Options
+from ui.pause import Pause
 from openworld import OpenWorld
 
 class Game:
@@ -30,7 +31,8 @@ class Game:
         self.states ={
             'mainmenu': MainMenu(self),
             'open_world': OpenWorld(self),
-            'options': Options(self)
+            'options': Options(self),
+            'paused': Pause(self)
         }
         self.active_state = 'mainmenu'
 
