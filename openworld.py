@@ -23,9 +23,10 @@ class OpenWorld(State):
 
     def gen_world(self):
         noise_generator = OpenSimplex(seed = 112340987613248) 
-        width = 200
-        height = 50
-        offset = 35
+        width = 100
+        height = 20
+        x_offset = 50 * TILESIZE
+        y_offset = 35
 
         for x in range(width):
             column = []
@@ -36,8 +37,8 @@ class OpenWorld(State):
 
                 if height_value > 0:
                     block = Block()
-                    block.rect.x = x * TILESIZE
-                    block.rect.y = (height - height_value + offset) * TILESIZE
+                    block.rect.x = x * TILESIZE - x_offset
+                    block.rect.y = (height - height_value + y_offset) * TILESIZE
                     self.sprites.add(block)
                     self.blocks.add(block)
 
