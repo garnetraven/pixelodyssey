@@ -51,6 +51,7 @@ class Inventory:
         surf = pygame.Surface((TILESIZE*1.5, TILESIZE*1.5))
         surf.fill("gray")
         surf.set_alpha(128)
+
         # expanded inventory ? 
         visible_slot_count = self.slot_count
         if self.expanded_inventory:
@@ -58,6 +59,7 @@ class Inventory:
 
         for index in range(visible_slot_count):
             pygame.draw.rect(self.screen, "gray", pygame.Rect(self.slot_rects[index].x-TILESIZE//4, self.slot_rects[index].y-TILESIZE//4, TILESIZE*1.5, TILESIZE*1.5), 2)
+
             # highlighting
             text_color = "white"
             if index == self.active_slot_idx:
@@ -65,6 +67,7 @@ class Inventory:
                 pygame.draw.rect(self.screen, "white", pygame.Rect(self.slot_rects[index].x-TILESIZE//4, self.slot_rects[index].y-TILESIZE//4, TILESIZE*1.5, TILESIZE*1.5))
             else:
                 self.screen.blit(surf, (self.slot_rects[index].x - TILESIZE//4, self.slot_rects[index].y - TILESIZE//4))
+
             #if self.slots[index].name != "default":
             #    #self.screen.blit(self.textures[self.slots[index].name], self.slot_rects[index])
             #    if self.slots[index].quantity > 1:
