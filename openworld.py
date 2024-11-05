@@ -49,7 +49,7 @@ class OpenWorld(State):
         self.sprites.update()
         self.inventory.update()
 
-        if EventHandler.keydown(pygame.K_p):
+        if EventHandler.keydown(pygame.K_ESCAPE):
             self.app.active_state = "paused"
 
 

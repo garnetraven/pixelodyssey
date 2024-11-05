@@ -2,6 +2,7 @@ import pygame
 from globals import *
 from utils.state import State
 from ui.components import StateButton 
+from utils.eventhandler import EventHandler
 
 class Pause(State):
     def __init__(self, app) -> None:
@@ -21,6 +22,8 @@ class Pause(State):
         ]
 
     def update(self) -> None:
+        if EventHandler.keydown(pygame.K_ESCAPE):
+            self.app.active_state = "open_world"
         for button in self.buttons:
             if button.clicked():
                 button.use(self.app)
