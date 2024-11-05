@@ -10,9 +10,9 @@ class EventHandler:
 
     @staticmethod
     def keydown(key) -> bool:
-        for event in EventHandler.events:
-            if event.type == pygame.KEYDOWN:
-                if event.key == key:
+        for e in EventHandler.events:
+            if e.type == pygame.KEYDOWN:
+                if e.key == key:
                     return True
         return False
 
@@ -23,6 +23,21 @@ class EventHandler:
                 return True
         return False
 
+    @staticmethod
+    def scroll_wheel_up() -> bool:
+        for e in EventHandler.events:
+            if e.type == pygame.MOUSEBUTTONDOWN:
+                if e.button == 4:
+                    return True
+        return False
+
+    @staticmethod
+    def scroll_wheel_down() -> bool:
+        for e in EventHandler.events:
+            if e.type == pygame.MOUSEBUTTONDOWN:
+                if e.button == 5:
+                    return True
+        return False
     @staticmethod
     def clicked(button: int = 1): # 1 - left click, 2 = right click
         for e in EventHandler.events:
