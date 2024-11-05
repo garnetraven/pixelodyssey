@@ -8,7 +8,7 @@ class Inventory:
         self.screen = self.app.screen
 
         self.slot_count = 10
-        self.expanded_slot_count = 20
+        self.expanded_slot_count = 50
         self.slots = []
 
         for idx in range(self.expanded_slot_count):
@@ -39,6 +39,16 @@ class Inventory:
         return slot_rects
 
     def input(self):
+        if not self.expanded_inventory:
+            if EventHandler.scroll_wheel_down():
+                self.active_slot_idx += 1
+            if EventHandler.scroll_wheel_up():
+                self.active_slot_idx -= 1
+            if self.active_slot_idx < 0:
+                self.active_slot_idx= self.slot_count-1
+            if self.active_slot_idx > self.slot_count-1:
+                self.active_slot_idx = 0 
+
         if EventHandler.keydown(pygame.K_e):
             self.expanded_inventory = not self.expanded_inventory
 
