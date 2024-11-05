@@ -5,6 +5,7 @@ from groups.camera import Camera
 from entities.player import Player
 from entities.block import Block
 from utils.eventhandler import EventHandler
+from inventory.inventory import Inventory
 from globals import *
 
 class OpenWorld(State):
@@ -14,6 +15,8 @@ class OpenWorld(State):
 
         self.sprites = Camera() 
         self.blocks = pygame.sprite.Group() 
+
+        self.inventory = Inventory(self.app)
 
         self.player = Player(self.blocks)
 
@@ -44,6 +47,7 @@ class OpenWorld(State):
 
     def update(self):
         self.sprites.update()
+        self.inventory.update()
 
         if EventHandler.keydown(pygame.K_p):
             self.app.active_state = "paused"
@@ -52,4 +56,5 @@ class OpenWorld(State):
     def draw(self):
         self.screen.fill('lightblue')
         self.sprites.draw(self.screen, self.player)
+        self.inventory.draw()
 
