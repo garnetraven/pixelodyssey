@@ -54,8 +54,6 @@ class Game:
         # Check for quit events
         if EventHandler.is_closed_requested():
             self.running = False
-        if EventHandler.keydown(pygame.K_q):
-            self.running = False
 
         # Update the active state
         self.states[self.active_state].update()
