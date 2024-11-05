@@ -12,10 +12,12 @@ class Pause(State):
 
         # text
         self.title = "Paused"
-        self.title_text = Pause.font.render(self.title, True, "white", None)
+        self.title_text = Pause.font.render(self.title, True, "black", None)
         self.title_rect = self.title_text.get_rect(center = (SCREENWIDTH // 2, SCREENHEIGHT // 2))
         self.buttons = [
-            StateButton(self.screen, "Back", "mainmenu", (SCREENWIDTH // 2, SCREENHEIGHT // 2 + 50)),
+            StateButton(self.screen, "Resume", "open_world", (SCREENWIDTH // 2, SCREENHEIGHT // 2 + 50)),
+            StateButton(self.screen, "Options", "options", (SCREENWIDTH // 2, SCREENHEIGHT // 2 + 100)),
+            StateButton(self.screen, "Main Menu", "mainmenu", (SCREENWIDTH // 2, SCREENHEIGHT // 2 + 150)),
         ]
 
     def update(self) -> None:
