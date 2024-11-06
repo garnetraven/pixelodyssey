@@ -1,5 +1,6 @@
 import pygame
 from pygame.math import Vector2
+from utils.controls import Controller
 from globals import *
 
 class Player(pygame.sprite.Sprite):
@@ -17,14 +18,15 @@ class Player(pygame.sprite.Sprite):
 
     def input(self):
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_a]:
+
+        if keys[Controller.left]:
             self.velocity.x = -SPEED 
-        elif keys[pygame.K_d]:
+        elif keys[Controller.right]:
             self.velocity.x = SPEED 
         else:
             self.velocity.x = 0
 
-        if keys[pygame.K_SPACE] and self.grounded:
+        if keys[Controller.jump] and self.grounded:
             self.jump()
 
     def jump(self):
