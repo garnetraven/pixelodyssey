@@ -8,7 +8,7 @@ class Block(pygame.sprite.Sprite):
         self.type = type
         self.in_groups = groups
         self.image = image.copy()
-        self.rect = self.image.get_rect(bottomleft = (position[0], position[1] + TILESIZE))
+        self.rect = self.image.get_rect(topleft=position)
         self.active = True
         self.hardness = hardness
         self.durability = durability

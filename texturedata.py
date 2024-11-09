@@ -23,8 +23,12 @@ class Texture:
 
 overworld_atlas = {
     "stone": AtlasTexture("stone", (0, 0), (8, 8)), 
-    "dirt": AtlasTexture("dirt", (0, 1), (8, 8)), 
-    "grass": AtlasTexture("grass", (0, 2), (8, 8)), 
+    "dirt": AtlasTexture("dirt", (1, 0), (8, 8)), 
+    "grass": AtlasTexture("grass", (2, 0), (8, 8)), 
+    "coal_ore": AtlasTexture("coal_ore", (3, 0), (8, 8)), 
+    "gold_ore": AtlasTexture("gold_ore", (4, 0), (8, 8)), 
+    "diamond_ore": AtlasTexture("diamond_ore", (5, 0), (8, 8)), 
+    "iron_ore": AtlasTexture("iron_ore", (6, 0), (8, 8)), 
 }
 
 player_textures = {}
